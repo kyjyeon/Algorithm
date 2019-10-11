@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 /**
 *	Relation between two items.
 */

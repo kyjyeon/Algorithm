@@ -57,3 +57,47 @@ int ArrayList::GetNextItem(ItemType& data)
 
 	return m_CurPointer;
 }
+
+int ArrayList::Get(ItemType& data) {
+	for (int i = 0; i < this->m_Length; ++i) {
+		if (m_Array->CompareByID(data) == EQUAL) {
+			data = m_Array[i];
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int ArrayList::Delete(ItemType data) {
+	ItemType temp;
+	if (this->GetLength() != 0) {
+		for (int i = 0; i < this->GetLength(); ++i) {
+			if (this->m_Array[i].GetId == data.GetId) {
+				for (int j = i; j < this->GetLength(); ++j) {
+					if (j == this->GetLength() - 1) {
+						this->m_Array[j] = temp;
+						--m_Length;
+						return 1;
+					}
+					this->m_Array[j] = this->m_Array[j + 1];
+				}
+			}
+		}
+	}
+	else {
+		return 0;
+	}
+}
+int ArrayList::Replace(ItemType data) {
+	if (this->GetLength() != 0) {
+		for (int i = 0; i < this->GetLength(); ++i) {
+			if (this->m_Array[i].GetId == data.GetId) {
+				this->m_Array[i] = data;
+				return 1;
+			}
+		}
+	}
+	else {
+		return 0;
+	}
+}

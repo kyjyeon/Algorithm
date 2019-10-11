@@ -15,7 +15,7 @@
 *				Expert 탭 -> Input (Topics 에서 선택) -> INPUT_ENCODING 을 "EUC-KR" 로 설정.
 *
 *	@date	2015.03.11 (작성일자 쓸 것!)
-*	@author	your name. (작성자 이름 쓸 것!) 
+*	@author	김연준. (작성자 이름 쓸 것!) 
 */
 
 #include "Application.h"

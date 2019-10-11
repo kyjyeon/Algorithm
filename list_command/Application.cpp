@@ -150,10 +150,12 @@ int Application::ReadDataFromFile()
 	m_InFile.close();	// file close
 
 	// [작성] 현재 list 출력
-	while (index < m_List.GetLength()) {
+	/*while (index < m_List.GetLength()) {
 		m_List.GetNextItem(data);
 		++index;
-	}
+	}*/
+	data.DisplayRecordOnScreen();
+
 	return 1;
 }
 
@@ -184,4 +186,39 @@ int Application::WriteDataToFile()
 	m_OutFile.close();	// file close
 
 	return 1;
+}
+
+int Application::SearchData() {
+	ItemType data;
+	data.SetIdFromKB();
+	int result = m_List.Delete(data);
+	result;
+	if (result == 1)
+		return 1;
+	else {
+		return 0;
+	}
+}
+
+int Application::DeleteItem() {
+	ItemType data;
+	data.SetIdFromKB();
+	int result = m_List.Delete(data);
+	result;
+	if (result == 1) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+int Application::UpdateItem() {
+	ItemType data;
+	data.SetRecordFromKB();
+	int result = m_List.Delete(data);
+	if (result == 1)
+		return 1;
+	else
+		return 0;
 }
