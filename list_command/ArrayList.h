@@ -78,7 +78,7 @@ public:
 	*/
 	int GetNextItem(ItemType& data);
 
-	/** [ÀÛ¼º]
+	/**
 	*	@brief List 안에 존재하는 record들과 파라미터로 받아온 record가 일치하는 위치를 찾아낸다
 	*	@pre List가 선언되어있어야한다, 참조로 받아오는 객체에 record ID가 정의되어있어야한다.
 	*	@post 리스트의 record들중 파라미터 record와 일치하는 아이디가 있을시 파라미터에 해당 list를 멤버변수들을 할당.
@@ -87,7 +87,7 @@ public:
 	*/
 	int Get(ItemType& data);
 
-	/** [ÀÛ¼º]
+	/** 
 	*	@brief 삭제하고자 하는 record를 keyboard로 받아와 list에서 일치하는 결과를 찾아 출력
 	*	@pre list가 선언되어 item들이 삭제 가능한존재하여야 한다.
 	*	@post List 안에 있는 ID들과 keyboard로 받아온 ID를 비교해서 일치하는 기록을 찾는다. 이후 기록을 ItemType 처음 선언시의 상태로 초기화한 후, 해당 record 이후 list의 record들은 위치를 -1하여 앞으로 당겨온다
@@ -96,7 +96,7 @@ public:
 	*/
 	int Delete(ItemType data);
 
-	/** [ÀÛ¼º]
+	/** 
 	*	@brief 갱신하고자 하는 record를 받아와 list에서 일치하는 결과를 찾고, 바꾸고자하는 record를 입력받아 해당 list 위치에 갱신시킨다.
 	*	@pre list가 선언되어 갱신 가능한 item들이 존재하여야 한다. 받아오는 파라미터에 객체에는 찾고자하는 ID 값이 정의 되어있어한다
 		@post List 안에 있는 ID들과 keyboard로 받아온 ID를 비교해서 일치하는 기록을 찾은 후 갱신하고자하는 record를 다시 입력받아 기존 record에 재할당 시킨다 
