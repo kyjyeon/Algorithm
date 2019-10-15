@@ -19,13 +19,13 @@ void Application::Run()
 		case 3:		// make empty list.
 			m_List.MakeEmpty();
 			break;
-		case 4:		// [ÀÛ¼º] search item from list.
+		case 4:		// search item from list.
 			SearchData();
 			break;
-		case 5:		// [ÀÛ¼º] delete item from list
+		case 5:		// delete item from list
 			DeleteItem();
 			break;
-		case 6:		// [ÀÛ¼º] update item in list
+		case 6:		// update item in list
 			UpdateItem();
 			break;
 		case 7:		// load list data from a file.
@@ -72,12 +72,12 @@ int Application::GetCommand()
 int Application::AddItem()
 {
 	ItemType temp;
-	// [ÀÛ¼º] ÀÔ·Â¹ŞÀº ·¹ÄÚµå¸¦ ¸®½ºÆ®¿¡ add, ¸®½ºÆ®°¡ fullÀÏ °æ¿ì´Â addÇÏÁö ¾Ê°í 0À» ¸®ÅÏ
+	// [ì‘ì„±] ì…ë ¥ë°›ì€ ë ˆì½”ë“œë¥¼ ë¦¬ìŠ¤íŠ¸ì— add, ë¦¬ìŠ¤íŠ¸ê°€ fullì¼ ê²½ìš°ëŠ” addí•˜ì§€ ì•Šê³  0ì„ ë¦¬í„´
 	if (Application::m_List.IsFull()) {
 		return 0;
 	}
 
-	// [ÀÛ¼º] ÇöÀç list Ãâ·Â
+	// [ì‘ì„±] í˜„ì¬ list ì¶œë ¥
 	else {
 		temp.SetRecordFromKB();
 		Application::m_List.Add(temp);
@@ -93,7 +93,7 @@ void Application::DisplayAllItem()
 	ItemType data;
 	m_List.ResetList();
 	cout << "\n\tCurrent list" << endl;
-	// [ÀÛ¼º] listÀÇ ¸ğµç µ¥ÀÌÅÍ¸¦ È­¸é¿¡ Ãâ·Â
+	// [ì‘ì„±] listì˜ ëª¨ë“  ë°ì´í„°ë¥¼ í™”ë©´ì— ì¶œë ¥
 
 	for (int i = 0; i < m_List.GetLength(); ++i) {
 		m_List.GetNextItem(data);
@@ -113,7 +113,7 @@ int Application::OpenInFile(char *fileName)
 	else {
 		return 0;
 	}
-	// [ÀÛ¼º] ÆÄÀÏ ¿ÀÇÂ¿¡ ¼º°øÇÏ¸é 1, ±×·¸Áö ¾Ê´Ù¸é 0À» ¸®ÅÏ.
+	// [ì‘ì„±] íŒŒì¼ ì˜¤í”ˆì— ì„±ê³µí•˜ë©´ 1, ê·¸ë ‡ì§€ ì•Šë‹¤ë©´ 0ì„ ë¦¬í„´.
 
 }
 
@@ -128,7 +128,6 @@ int Application::OpenOutFile(char *fileName)
 	else {
 		return 0;
 	}
-	// [ÀÛ¼º] ÆÄÀÏ ¿ÀÇÂ¿¡ ¼º°øÇÏ¸é 1, ±×·¸Áö ¾Ê´Ù¸é 0À» ¸®ÅÏ.
 
 }
 
@@ -137,23 +136,23 @@ int Application::OpenOutFile(char *fileName)
 int Application::ReadDataFromFile()
 {
 	int index = 0;
-	ItemType data;	// ÀĞ±â¿ë ÀÓ½Ã º¯¼ö
+	ItemType data;	// ì½ê¸°ìš© ì„ì‹œ ë³€ìˆ˜
 
 	char filename[FILENAMESIZE];
 	cout << "\n\tEnter Input file Name : ";
 	cin >> filename;
 
-	// [ÀÛ¼º] file open, open error°¡ ¹ß»ıÇÏ¸é 0À» ¸®ÅÏ
+	// file open, open errorê°€ ë°œìƒí•˜ë©´ 0ì„ ë¦¬í„´
 	if (OpenInFile(filename) == 0)
 		return 0;
-	// [ÀÛ¼º] ÆÄÀÏÀÇ ¸ğµç ³»¿ëÀ» ÀĞ¾î list¿¡ Ãß°¡	
+	// íŒŒì¼ì˜ ëª¨ë“  ë‚´ìš©ì„ ì½ì–´ listì— ì¶”ê°€	
 		while (!OpenInFile(filename)) {
 			data.ReadDataFromFile(m_InFile);
 			m_List.Add(data);
 		}
 	m_InFile.close();	// file close
 
-	// [ÀÛ¼º] ÇöÀç list Ãâ·Â
+	// í˜„ì¬ list ì¶œë ¥
 	data.DisplayRecordOnScreen();
 	return 1;
 }
@@ -162,20 +161,20 @@ int Application::ReadDataFromFile()
 // Open a file as a write mode, and write all data into the file,
 int Application::WriteDataToFile()
 {
-	ItemType data;	// ¾²±â¿ë ÀÓ½Ã º¯¼ö
+	ItemType data;	// ì“°ê¸°ìš© ì„ì‹œ ë³€ìˆ˜
 
 	char filename[FILENAMESIZE];
 	cout << "\n\tEnter Output file Name : ";
 	cin >> filename;
 
-	// [ÀÛ¼º] file open, open error°¡ ¹ß»ıÇÏ¸é 0À» ¸®ÅÏ
+	// file open, open errorê°€ ë°œìƒí•˜ë©´ 0ì„ ë¦¬í„´
 	if (!OpenOutFile(filename))
 		return 0;
 
-	// [ÀÛ¼º] list Æ÷ÀÎÅÍ¸¦ ÃÊ±âÈ­
+	// list í¬ì¸í„°ë¥¼ ì´ˆê¸°í™”
 	m_List.ResetList();
 
-	// [ÀÛ¼º] listÀÇ ¸ğµç µ¥ÀÌÅÍ¸¦ ÆÄÀÏ¿¡ ¾²±â
+	// listì˜ ëª¨ë“  ë°ì´í„°ë¥¼ íŒŒì¼ì— ì“°ê¸°
 	for (int i = 0; i < m_List.GetLength(); ++i) {
 		m_List.GetNextItem(data);
 		data.WriteDataToFile(m_OutFile);
