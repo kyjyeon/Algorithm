@@ -1,4 +1,3 @@
-
 #ifndef _ITEMTYPE_H
 #define _ITEMTYPE_H
 
@@ -11,7 +10,7 @@ using namespace std;
 /**
 *	Relation between two items.
 */
-enum RelationType {LESS, GREATER, EQUAL};
+enum RelationType { LESS, GREATER, EQUAL };
 
 
 /**
@@ -33,7 +32,7 @@ public:
 	/**
 	*	destructor.
 	*/
-	~ItemType()	{}
+	~ItemType() {}
 
 	/**
 	*	@brief	Get student id.
@@ -78,7 +77,7 @@ public:
 	{
 		m_Id = inId;
 	}
-	
+
 	/**
 	*	@brief	Set student name.
 	*	@pre	none.
@@ -89,7 +88,7 @@ public:
 	{
 		m_sName = inName;
 	}
-	
+
 	/**
 	*	@brief	Set student address.
 	*	@pre	none.
@@ -100,7 +99,7 @@ public:
 	{
 		m_sAddress = inAddress;
 	}
-	
+
 	/**
 	*	@brief	Set student record.
 	*	@pre	none.
@@ -121,9 +120,9 @@ public:
 	*	@pre	student id is set.
 	*	@post	student id is on screen.
 	*/
-	void DisplayIdOnScreen() 
+	void DisplayIdOnScreen()
 	{
-		cout << "\tID   : " << m_Id << endl; 
+		cout << "\tID   : " << m_Id << endl;
 	};
 
 	/**
@@ -131,9 +130,9 @@ public:
 	*	@pre	student name is set.
 	*	@post	student name is on screen.
 	*/
-	void DisplayNameOnScreen() 
+	void DisplayNameOnScreen()
 	{
-		cout << "\tName : " << m_sName << endl; 
+		cout << "\tName : " << m_sName << endl;
 	};
 
 	/**
@@ -141,9 +140,9 @@ public:
 	*	@pre	student address is set.
 	*	@post	student address is on screen.
 	*/
-	void DisplayAddressOnScreen() 
+	void DisplayAddressOnScreen()
 	{
-		cout << "\tAddress : " << m_sAddress << endl; 
+		cout << "\tAddress : " << m_sAddress << endl;
 	};
 
 	/**
@@ -178,7 +177,7 @@ public:
 	*	@post	student address is set.
 	*/
 	void SetAddressFromKB();
-	
+
 	/**
 	*	@brief	Set student record from keyboard.
 	*	@pre	none.
@@ -203,14 +202,14 @@ public:
 	*	@return	return 1 if this function works well, otherwise 0.
 	*/
 	int WriteDataToFile(ofstream& fout);
-	
+
 	/**
 	*	Compare two itemtypes.
 	*	@brief	Compare two item types by item id.
 	*	@pre	two item types should be initialized.
 	*	@post	the target file is included the new item record.
 	*	@param	data	target item for comparing.
-	*	@return	return LESS if this.id < data.id, 
+	*	@return	return LESS if this.id < data.id,
 	*			return GREATER if this.id > data.id then,
 	*			otherwise return EQUAL.
 	*/

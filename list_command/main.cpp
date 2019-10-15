@@ -10,12 +10,12 @@
 *				Step 4: Destination directory 에 문서화한 데이터가 저장될 경로 지정.<br>
 *				Step 5: Wizard 탭의 Output 에서 LaTeX 체크 해제.<br>
 *				Step 6: Run 탭의 Run doxygen 수행 후, "Doxygen has finished" 확인.<br>
-*				
+*
 *				- 한글사용을 위해서는 Doxywizard에서 아래와 같이 설정할 것.<br>
 *				Expert 탭 -> Input (Topics 에서 선택) -> INPUT_ENCODING 을 "EUC-KR" 로 설정.
 *
 *	@date	2015.03.11 (작성일자 쓸 것!)
-*	@author	김연준. (작성자 이름 쓸 것!) 
+*	@author	김연준. (작성자 이름 쓸 것!)
 */
 
 #include "Application.h"

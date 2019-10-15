@@ -60,9 +60,9 @@ int ItemType::WriteDataToFile(ofstream& fout)
 // Compare two itemtypes.
 RelationType ItemType::CompareByID(const ItemType &data)
 {
-	if(this->m_Id > data.m_Id)
+	if (this->m_Id > data.m_Id)
 		return GREATER;
-	else if(this->m_Id < data.m_Id)
+	else if (this->m_Id < data.m_Id)
 		return LESS;
 	else
 		return EQUAL;
