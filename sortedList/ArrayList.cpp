@@ -152,60 +152,90 @@ int ArrayList::Replace(ItemType data) {
 
 int ArrayList::GetBinarySearch(ItemType& data) {
 
-	/*참조 받아온 ItemType 객체의 아이디 변수, BinarySearch에 필요한 시작값 중간값 끝값, 
-	이 3가지 위치에 있는 ItemType 객체가 가지는 ID값을 나타내는 변수를 각각 선언해준다*/
-	int id = data.GetId();
-	int start, end, middle, startLoc, endLoc, middleLoc;
-	
-	startLoc = 0;
-	endLoc = GetLength() - 1;
-	middleLoc = endLoc / 2;
+	///*참조 받아온 ItemType 객체의 아이디 변수, BinarySearch에 필요한 시작값 중간값 끝값, 
+	//이 3가지 위치에 있는 ItemType 객체가 가지는 ID값을 나타내는 변수를 각각 선언해준다*/
+	//int id = data.GetId();
+	//int start, end, middle, startLoc, endLoc, middleLoc;
+	//
+	//startLoc = 0;
+	//endLoc = GetLength() - 1;
+	//middleLoc = endLoc / 2;
 
-	start = m_Array[startLoc].GetId();
-	end = m_Array[endLoc].GetId();
-	middle = m_Array[middleLoc].GetId();
+	//start = m_Array[startLoc].GetId();
+	//end = m_Array[endLoc].GetId();
+	//middle = m_Array[middleLoc].GetId();
 
-	//bool 형태로 found 변수를 선언해 search를 통해 찾을 시 true를 만들어준다
-	bool found = false;
+	////bool 형태로 found 변수를 선언해 search를 통해 찾을 시 true를 만들어준다
+	//bool found = false;
 
-	//found bool이 true가 될때까지 BinarySearch를 실행하는 while문
-	while (found) {
-		//아이디가 가운데값과 바로 같다면 found가 true되고 loop를 빠져나옴
-		if (id == middle) {
-			data = m_Array[middle];
-			found = true;
-			break;
-		}
-		// id 변수 값이 middle보다 클때 middle 보다 작은 위치의 값들은 제외한채로 범위를 줄여감
-		else if (id > middle) {
-			startLoc = middleLoc + 1;
-			middleLoc = (startLoc + endLoc) / 2;
-			//최종적으로 시작, 중간, 끝이 겹치는 지점이 검색하여 찾음에 성공을 뜻하므로 data변수에 해당 m_array위치의 데이터를 넣어줌
-			if (startLoc == middleLoc == endLoc) {
-				data = m_Array[startLoc];
-				found = true;
-				break;
-			}
-			// 시작 위치가 마지막 위치보다 커졌을때는 list 범위 전체를 훍고 최종적으로 일치하는 ID값이 없단것을 뜻하으로 바로 0을 return
-			else if (startLoc > endLoc)
-				return 0;
-		}
-		// id 변수 값이 middle보다 작을때 middle 보다 큰 위치의 값들은 제외한채로 범위를 줄여감
-		else if (id < middle) {
-			endLoc = middle - 1;
-			middleLoc = (startLoc + endLoc) / 2;
-			if (startLoc == middleLoc == endLoc) {
-				data = m_Array[startLoc];
-				found = true;
-				break;
-			}
-			else if (startLoc > endLoc)
-				return 0;
-		}
-	}
+	////found bool이 true가 될때까지 BinarySearch를 실행하는 while문
+	//while (found) {
+	//	//아이디가 가운데값과 바로 같다면 found가 true되고 loop를 빠져나옴
+	//	if (id == middle) {
+	//		data = m_Array[middle];
+	//		found = true;
+	//		break;
+	//	}
+	//	// id 변수 값이 middle보다 클때 middle 보다 작은 위치의 값들은 제외한채로 범위를 줄여감
+	//	else if (id > middle) {
+	//		startLoc = middleLoc + 1;
+	//		middleLoc = (startLoc + endLoc) / 2;
+	//		//최종적으로 시작, 중간, 끝이 겹치는 지점이 검색하여 찾음에 성공을 뜻하므로 data변수에 해당 m_array위치의 데이터를 넣어줌
+	//		if (startLoc == middleLoc == endLoc) {
+	//			data = m_Array[startLoc];
+	//			found = true;
+	//			break;
+	//		}
+	//		// 시작 위치가 마지막 위치보다 커졌을때는 list 범위 전체를 훍고 최종적으로 일치하는 ID값이 없단것을 뜻하으로 바로 0을 return
+	//		else if (startLoc > endLoc)
+	//			return 0;
+	//	}
+	//	// id 변수 값이 middle보다 작을때 middle 보다 큰 위치의 값들은 제외한채로 범위를 줄여감
+	//	else if (id < middle) {
+	//		endLoc = middle - 1;
+	//		middleLoc = (startLoc + endLoc) / 2;
+	//		if (startLoc == middleLoc == endLoc) {
+	//			data = m_Array[startLoc];
+	//			found = true;
+	//			break;
+	//		}
+	//		else if (startLoc > endLoc)
+	//			return 0;
+	//	}
 	//found가 true일시 1, false 유지 시 0 반환
-	if (found == true)
+	/*if (found == true)
 		return 1;
 	else
-		return 0;
+		return 0;*/
+	if (m_Length > 0 && !IsFull())
+	{
+		ResetList();
+
+		int head = 0;
+		int tail = m_Length - 1;
+
+		while (head <= tail)
+		{
+			m_CurPointer = (tail + head) / 2;
+			switch (data.CompareByID(m_Array[m_CurPointer]))
+			{
+			case RelationType::EQUAL:
+				data = m_Array[m_CurPointer];
+				return 1;
+			case RelationType::GREATER:
+				head = m_CurPointer + 1;
+				break;
+			case RelationType::LESS:
+				tail = m_CurPointer - 1;
+				break;
+			}
+		}
+	}
+	else
+	{
+		return -1;
+	}
+
+	return 0;
+
 }
