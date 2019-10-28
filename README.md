@@ -1,2 +1,2 @@
 # Algorithm
-Algorithm/Data structure solution storage repo
+Algorithm/Data structure solution storage
