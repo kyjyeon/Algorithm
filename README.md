@@ -1,2 +1,2 @@
 # Algorithm
-Algorithm/Data structure solution storage
+Data structure solution storage
